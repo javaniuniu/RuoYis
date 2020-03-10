@@ -58,12 +58,16 @@ public class ShiroUtils {
         subject.runAs(newPrincipalCollection);
     }
 
-    public static void clearCachedAuthorizationInfo()
-    {
-        RealmSecurityManager rsm = (RealmSecurityManager) SecurityUtils.getSecurityManager();
-        UserRealm realm = (UserRealm) rsm.getRealms().iterator().next();
-        realm.clearCachedAuthorizationInfo();
-    }
+    /**
+     * TODO 清理登陆缓存
+     * @return
+     */
+//    public static void clearCachedAuthorizationInfo()
+//    {
+//        RealmSecurityManager rsm = (RealmSecurityManager) SecurityUtils.getSecurityManager();
+//        UserRealm realm = (UserRealm) rsm.getRealms().iterator().next();
+//        realm.clearCachedAuthorizationInfo();
+//    }
 
 
 
