@@ -12,6 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 线程池配置
+ *
  * @Author: java牛牛
  * @Web: http://javaniuniu.com
  * @GitHub https://github.com/minplemon
@@ -48,11 +49,10 @@ public class ThreadPoolConfig {
      */
     @Bean(name = "scheduledExecutorService")
     protected ScheduledExecutorService scheduledExecutorService() {
-        return new ScheduledThreadPoolExecutor(corePoolSize,new BasicThreadFactory
+        return new ScheduledThreadPoolExecutor(corePoolSize, new BasicThreadFactory
                 .Builder().namingPattern("schedule-pool-%d").daemon(true).build()) {
             @Override
-            protected void afterExecute(Runnable r, Throwable t)
-            {
+            protected void afterExecute(Runnable r, Throwable t) {
                 super.afterExecute(r, t);
                 Threads.printException(r, t);
             }

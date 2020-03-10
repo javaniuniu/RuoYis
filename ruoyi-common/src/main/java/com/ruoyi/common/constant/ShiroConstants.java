@@ -2,6 +2,7 @@ package com.ruoyi.common.constant;
 
 /**
  * Shiro通用常量
+ *
  * @Author: java牛牛
  * @Web: http://javaniuniu.com
  * @GitHub https://github.com/minplemon

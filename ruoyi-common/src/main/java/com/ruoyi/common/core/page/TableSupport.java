@@ -5,18 +5,17 @@ import com.ruoyi.common.utils.ServletUtils;
 
 /**
  * 表格数据处理
+ *
  * @Author: java牛牛
  * @Web: http://javaniuniu.com
  * @GitHub https://github.com/minplemon
  * @Date: 2020/3/9 9:53 PM
  */
-public class TableSupport
-{
+public class TableSupport {
     /**
      * 封装分页对象
      */
-    public static PageDomain getPageDomain()
-    {
+    public static PageDomain getPageDomain() {
         PageDomain pageDomain = new PageDomain();
         pageDomain.setPageNum(ServletUtils.getParameterToInt(Constants.PAGE_NUM));
         pageDomain.setPageSize(ServletUtils.getParameterToInt(Constants.PAGE_SIZE));
@@ -25,8 +24,7 @@ public class TableSupport
         return pageDomain;
     }
 
-    public static PageDomain buildPageRequest()
-    {
+    public static PageDomain buildPageRequest() {
         return getPageDomain();
     }
 }

@@ -7,6 +7,8 @@ import com.ruoyi.common.utils.ServletUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
 import com.ruoyi.framework.util.ShiroUtils;
 import com.ruoyi.system.domain.SysLogininfor;
+import com.ruoyi.system.domain.SysOperLog;
+import com.ruoyi.system.service.ISysOperLogService;
 import com.ruoyi.system.service.impl.SysLogininforServiceImpl;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.slf4j.Logger;
@@ -16,6 +18,7 @@ import java.util.TimerTask;
 
 /**
  * 异步工厂（产生任务用）
+ *
  * @Author: java牛牛
  * @Web: http://javaniuniu.com
  * @GitHub https://github.com/minplemon
@@ -33,21 +36,28 @@ public class AsyncFactory {
 
 
     /**
-     * TODO 操作日志记录
-     *
      * @param operLog 操作日志信息
      * @return 任务task
      */
-
+    public static TimerTask recordOper(final SysOperLog operLog) {
+        return new TimerTask() {
+            @Override
+            public void run() {
+                // 远程查询操作地点
+                operLog.setOperLocation(AddressUtils.getRealAddressByIP(operLog.getOperIp()));
+                SpringUtils.getBean(ISysOperLogService.class).insertOperlog(operLog);
+            }
+        };
+    }
 
 
     /**
      * 记录登陆信息
      *
      * @param username 用户名
-     * @param status 状态
-     * @param message 消息
-     * @param args 列表
+     * @param status   状态
+     * @param message  消息
+     * @param args     列表
      * @return 任务task
      */
 
@@ -65,7 +75,7 @@ public class AsyncFactory {
                 s.append(LogUtils.getBlock(status));
                 s.append(LogUtils.getBlock(message));
                 // 打印信息到日志
-                sys_user_logger.info(s.toString(),args);
+                sys_user_logger.info(s.toString(), args);
                 // 获取客户端操作系统
                 String os = userAgent.getOperatingSystem().getName();
                 // 获取客户端浏览器
@@ -79,10 +89,9 @@ public class AsyncFactory {
                 logininfor.setOs(os);
                 logininfor.setMsg(message);
                 // 日志状态
-                if (Constants.LOGIN_SUCCESS.equals(status)||Constants.LOGOUT.equals(status)) {
+                if (Constants.LOGIN_SUCCESS.equals(status) || Constants.LOGOUT.equals(status)) {
                     logininfor.setStatus(Constants.SUCCESS);
-                }
-                else if (Constants.LOGIN_FAIL.equals(status)) {
+                } else if (Constants.LOGIN_FAIL.equals(status)) {
                     logininfor.setStatus(Constants.FAIL);
                 }
                 SpringUtils.getBean(SysLogininforServiceImpl.class).insertLogininfor(logininfor);

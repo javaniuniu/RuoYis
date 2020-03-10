@@ -6,16 +6,16 @@ import java.util.List;
 
 /**
  * 公告 服务层
+ *
  * @Author: java牛牛
  * @Web: http://javaniuniu.com
  * @GitHub https://github.com/minplemon
  * @Date: 2020/3/9 9:53 PM
  */
-public interface ISysNoticeService
-{
+public interface ISysNoticeService {
     /**
      * 查询公告信息
-     * 
+     *
      * @param noticeId 公告ID
      * @return 公告信息
      */
@@ -23,7 +23,7 @@ public interface ISysNoticeService
 
     /**
      * 查询公告列表
-     * 
+     *
      * @param notice 公告信息
      * @return 公告集合
      */
@@ -31,7 +31,7 @@ public interface ISysNoticeService
 
     /**
      * 新增公告
-     * 
+     *
      * @param notice 公告信息
      * @return 结果
      */
@@ -39,7 +39,7 @@ public interface ISysNoticeService
 
     /**
      * 修改公告
-     * 
+     *
      * @param notice 公告信息
      * @return 结果
      */
@@ -47,7 +47,7 @@ public interface ISysNoticeService
 
     /**
      * 删除公告信息
-     * 
+     *
      * @param ids 需要删除的数据ID
      * @return 结果
      */

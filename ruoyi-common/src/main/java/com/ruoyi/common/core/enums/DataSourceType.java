@@ -2,11 +2,10 @@ package com.ruoyi.common.core.enums;
 
 /**
  * 数据源
- * 
+ *
  * @author javaniuniu
  */
-public enum DataSourceType
-{
+public enum DataSourceType {
     /**
      * 主库
      */

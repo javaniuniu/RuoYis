@@ -2,13 +2,13 @@ package com.ruoyi.common.core.enums;
 
 /**
  * 操作人类别
+ *
  * @Author: java牛牛
  * @Web: http://javaniuniu.com
  * @GitHub https://github.com/minplemon
  * @Date: 2020/3/9 9:53 PM
  */
-public enum OperatorType
-{
+public enum OperatorType {
     /**
      * 其它
      */

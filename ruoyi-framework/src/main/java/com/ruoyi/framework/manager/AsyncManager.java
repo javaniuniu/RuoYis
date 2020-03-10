@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 异步任务管理器
+ *
  * @Author: java牛牛
  * @Web: http://javaniuniu.com
  * @GitHub https://github.com/minplemon
@@ -29,7 +30,8 @@ public class AsyncManager {
     /**
      * 单例模式 TODO
      */
-    private AsyncManager(){}
+    private AsyncManager() {
+    }
 
     private static AsyncManager me = new AsyncManager();
 
@@ -43,17 +45,15 @@ public class AsyncManager {
      * @param task 任务
      */
     public void execute(TimerTask task) {
-        executor.schedule(task,OPERATE_DELAY_TIME, TimeUnit.MILLISECONDS);
+        executor.schedule(task, OPERATE_DELAY_TIME, TimeUnit.MILLISECONDS);
     }
+
     /**
      * 停止任务线程池
      */
     public void shutdown() {
         Threads.shutdownAndAwaitTermination(executor);
     }
-
-
-
 
 
 }

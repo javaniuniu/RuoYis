@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Excel注解集
+ *
  * @Author: java牛牛
  * @Web: http://javaniuniu.com
  * @GitHub https://github.com/minplemon
@@ -14,7 +15,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Excels
-{
+public @interface Excels {
     Excel[] value();
 }
