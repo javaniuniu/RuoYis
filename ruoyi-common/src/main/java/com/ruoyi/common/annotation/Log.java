@@ -1,7 +1,7 @@
 package com.ruoyi.common.annotation;
 
-import com.ruoyi.common.core.enums.BusinessType;
-import com.ruoyi.common.core.enums.OperatorType;
+import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.common.enums.OperatorType;
 
 import java.lang.annotation.*;
 

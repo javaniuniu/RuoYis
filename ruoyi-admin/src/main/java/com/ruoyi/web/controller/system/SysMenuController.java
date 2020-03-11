@@ -5,7 +5,7 @@ import com.ruoyi.common.constant.UserConstants;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.domain.Ztree;
-import com.ruoyi.common.core.enums.BusinessType;
+import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.framework.util.ShiroUtils;
 import com.ruoyi.system.domain.SysMenu;
 import com.ruoyi.system.domain.SysRole;
@@ -22,7 +22,10 @@ import java.util.List;
 /**
  * 菜单信息
  *
- * @author ruoyi
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/minplemon
+ * @Date: 2020/3/9 9:53 PM
  */
 @Controller
 @RequestMapping("/system/menu")

@@ -1,10 +1,10 @@
 package com.ruoyi.framework.aspectj;
 
 import com.ruoyi.common.annotation.Log;
-import com.ruoyi.common.core.enums.BusinessStatus;
+import com.ruoyi.common.enums.BusinessStatus;
 import com.ruoyi.common.utils.ServletUtils;
 import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.common.utils.json.JSON;
+import com.ruoyi.common.json.JSON;
 import com.ruoyi.framework.manager.AsyncManager;
 import com.ruoyi.framework.manager.factory.AsyncFactory;
 import com.ruoyi.framework.util.ShiroUtils;

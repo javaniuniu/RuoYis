@@ -1,4 +1,8 @@
 ## 知识点
+### TODO 
+- @RequiresPermissions 注解使用
+### @Validated和@Valid区别：Spring validation验证框架对入参实体进行嵌套验证必须在相应属性（字段）加上@Valid而不是@Validated [@Validated和@Valid区别](https://blog.csdn.net/qq_27680317/article/details/79970590)
+
 ### 返回数据类
 #### 不含 @ResponseBody 方法
 - String 在请求当前login.html页面同时传递信息到前端

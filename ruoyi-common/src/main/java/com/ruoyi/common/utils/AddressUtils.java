@@ -2,8 +2,8 @@ package com.ruoyi.common.utils;
 
 import com.ruoyi.common.config.Global;
 import com.ruoyi.common.utils.http.HttpUtils;
-import com.ruoyi.common.utils.json.JSON;
-import com.ruoyi.common.utils.json.JSONObject;
+import com.ruoyi.common.json.JSON;
+import com.ruoyi.common.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

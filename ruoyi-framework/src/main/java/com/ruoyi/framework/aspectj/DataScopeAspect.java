@@ -19,7 +19,10 @@ import java.lang.reflect.Method;
 /**
  * 数据过滤处理
  *
- * @author ruoyi
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/minplemon
+ * @Date: 2020/3/9 9:53 PM
  */
 @Aspect
 @Component
