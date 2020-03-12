@@ -15,10 +15,7 @@ import org.apache.shiro.subject.Subject;
 /**
  * shiro 工具类
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 10:05 PM
+ * @author javaniuniu
  */
 public class ShiroUtils {
     public static Subject getSubject() {
@@ -38,7 +35,6 @@ public class ShiroUtils {
         Object obj = getSubject().getPrincipal();
         if (StringUtils.isNotNull(obj)) {
             user = new SysUser();
-            //TODO copyBeanProp 还可以复制 Bean
             BeanUtils.copyBeanProp(user, obj);
         }
         return user;
@@ -53,11 +49,6 @@ public class ShiroUtils {
         subject.runAs(newPrincipalCollection);
     }
 
-    /**
-     * 清理登陆缓存
-     *
-     * @return
-     */
     public static void clearCachedAuthorizationInfo() {
         RealmSecurityManager rsm = (RealmSecurityManager) SecurityUtils.getSecurityManager();
         UserRealm realm = (UserRealm) rsm.getRealms().iterator().next();

@@ -7,7 +7,7 @@ import com.alibaba.druid.util.Utils;
 import com.ruoyi.common.enums.DataSourceType;
 import com.ruoyi.common.utils.spring.SpringUtils;
 import com.ruoyi.framework.config.properties.DruidProperties;
-//import com.ruoyi.framework.datasource.DynamicDataSource;
+import com.ruoyi.framework.datasource.DynamicDataSource;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -24,10 +24,7 @@ import java.util.Map;
 /**
  * druid 配置多数据源
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Configuration
 public class DruidConfig {
@@ -46,15 +43,14 @@ public class DruidConfig {
         return druidProperties.dataSource(dataSource);
     }
 
-//    @Bean(name = "dynamicDataSource")
-//    @Primary
-//    public DynamicDataSource dataSource(DataSource masterDataSource)
-//    {
-//        Map<Object, Object> targetDataSources = new HashMap<>();
-//        targetDataSources.put(DataSourceType.MASTER.name(), masterDataSource);
-//        setDataSource(targetDataSources, DataSourceType.SLAVE.name(), "slaveDataSource");
-//        return new DynamicDataSource(masterDataSource, targetDataSources);
-//    }
+    @Bean(name = "dynamicDataSource")
+    @Primary
+    public DynamicDataSource dataSource(DataSource masterDataSource) {
+        Map<Object, Object> targetDataSources = new HashMap<>();
+        targetDataSources.put(DataSourceType.MASTER.name(), masterDataSource);
+        setDataSource(targetDataSources, DataSourceType.SLAVE.name(), "slaveDataSource");
+        return new DynamicDataSource(masterDataSource, targetDataSources);
+    }
 
     /**
      * 设置数据源

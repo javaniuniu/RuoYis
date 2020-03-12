@@ -21,10 +21,7 @@ import java.util.List;
 /**
  * 在线用户监控
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Controller
 @RequestMapping("/monitor/online")
@@ -62,7 +59,7 @@ public class SysUserOnlineController extends BaseController {
             if (online == null) {
                 return error("用户已下线");
             }
-            OnlineSession onlineSession = (OnlineSession) onlineSessionDAO.readSession(online.getSessionId());//readSession 会调用 doSession() 方法
+            OnlineSession onlineSession = (OnlineSession) onlineSessionDAO.readSession(online.getSessionId());
             if (onlineSession == null) {
                 return error("用户已下线");
             }

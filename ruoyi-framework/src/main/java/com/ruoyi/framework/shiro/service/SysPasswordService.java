@@ -13,20 +13,17 @@ import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 登录密码方法
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 10:15 PM
+ * @author javaniuniu
  */
-//TODO
+@Component
 public class SysPasswordService {
     @Autowired
     private CacheManager cacheManager;
@@ -50,10 +47,11 @@ public class SysPasswordService {
             retryCount = new AtomicInteger(0);
             loginRecordCache.put(loginName, retryCount);
         }
-        if (retryCount.incrementAndGet() > Integer.valueOf(maxRetryCount)) {
+        if (retryCount.incrementAndGet() > Integer.valueOf(maxRetryCount).intValue()) {
             AsyncManager.me().execute(AsyncFactory.recordLogininfor(loginName, Constants.LOGIN_FAIL, MessageUtils.message("user.password.retry.limit.exceed", maxRetryCount)));
             throw new UserPasswordRetryLimitExceedException(Integer.valueOf(maxRetryCount).intValue());
         }
+
         if (!matches(user, password)) {
             AsyncManager.me().execute(AsyncFactory.recordLogininfor(loginName, Constants.LOGIN_FAIL, MessageUtils.message("user.password.retry.limit.count", retryCount)));
             loginRecordCache.put(loginName, retryCount);
@@ -61,7 +59,6 @@ public class SysPasswordService {
         } else {
             clearLoginRecordCache(loginName);
         }
-
     }
 
     public boolean matches(SysUser user, String newPassword) {
@@ -79,4 +76,5 @@ public class SysPasswordService {
     public void unlock(String loginName) {
         loginRecordCache.remove(loginName);
     }
+
 }

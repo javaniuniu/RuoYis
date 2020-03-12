@@ -2,9 +2,9 @@ package com.ruoyi.framework.aspectj;
 
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.enums.BusinessStatus;
+import com.ruoyi.common.json.JSON;
 import com.ruoyi.common.utils.ServletUtils;
 import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.common.json.JSON;
 import com.ruoyi.framework.manager.AsyncManager;
 import com.ruoyi.framework.manager.factory.AsyncFactory;
 import com.ruoyi.framework.util.ShiroUtils;
@@ -27,10 +27,7 @@ import java.util.Map;
 /**
  * 操作日志记录处理
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/10 7:48 PM
+ * @author javaniuniu
  */
 @Aspect
 @Component
@@ -47,7 +44,7 @@ public class LogAspect {
      *
      * @param joinPoint 切点
      */
-    @AfterReturning(pointcut = "logPointCut()", returning = "jsonResult")//jsonResult 被注解方法的返回值
+    @AfterReturning(pointcut = "logPointCut()", returning = "jsonResult")
     public void doAfterReturning(JoinPoint joinPoint, Object jsonResult) {
         handleLog(joinPoint, null, jsonResult);
     }
@@ -63,13 +60,14 @@ public class LogAspect {
         handleLog(joinPoint, e, null);
     }
 
-    private void handleLog(JoinPoint joinPoint, final Exception e, Object jsonResult) {
+    protected void handleLog(final JoinPoint joinPoint, final Exception e, Object jsonResult) {
         try {
             // 获得注解
             Log controllerLog = getAnnotationLog(joinPoint);
             if (controllerLog == null) {
                 return;
             }
+
             // 获取当前的用户
             SysUser currentUser = ShiroUtils.getSysUser();
 
@@ -90,6 +88,7 @@ public class LogAspect {
                     operLog.setDeptName(currentUser.getDept().getDeptName());
                 }
             }
+
             if (e != null) {
                 operLog.setStatus(BusinessStatus.FAIL.ordinal());
                 operLog.setErrorMsg(StringUtils.substring(e.getMessage(), 0, 2000));
@@ -104,7 +103,6 @@ public class LogAspect {
             getControllerMethodDescription(controllerLog, operLog);
             // 保存数据库
             AsyncManager.me().execute(AsyncFactory.recordOper(operLog));
-
         } catch (Exception exp) {
             // 记录本地异常日志
             log.error("==前置通知异常==");
@@ -120,7 +118,7 @@ public class LogAspect {
      * @param operLog 操作日志
      * @throws Exception
      */
-    private void getControllerMethodDescription(Log log, SysOperLog operLog) throws Exception {
+    public void getControllerMethodDescription(Log log, SysOperLog operLog) throws Exception {
         // 设置action动作
         operLog.setBusinessType(log.businessType().ordinal());
         // 设置标题
@@ -132,7 +130,6 @@ public class LogAspect {
             // 获取参数的信息，传入到数据库中。
             setRequestValue(operLog);
         }
-
     }
 
     /**
@@ -154,6 +151,7 @@ public class LogAspect {
         Signature signature = joinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature) signature;
         Method method = methodSignature.getMethod();
+
         if (method != null) {
             return method.getAnnotation(Log.class);
         }

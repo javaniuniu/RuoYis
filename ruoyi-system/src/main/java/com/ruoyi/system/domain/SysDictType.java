@@ -12,10 +12,7 @@ import javax.validation.constraints.Size;
 /**
  * 字典类型表 sys_dict_type
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 public class SysDictType extends BaseEntity {
     private static final long serialVersionUID = 1L;

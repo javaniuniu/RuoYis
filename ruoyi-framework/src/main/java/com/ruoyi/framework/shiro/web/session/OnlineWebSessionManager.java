@@ -18,16 +18,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 /**
  * 主要是在此如果会话的属性修改了 就标识下其修改了 然后方便 OnlineSessionDao同步
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/11 4:15 PM
+ * @author javaniuniu
  */
 public class OnlineWebSessionManager extends DefaultWebSessionManager {
     private static final Logger log = LoggerFactory.getLogger(OnlineWebSessionManager.class);
@@ -39,16 +37,6 @@ public class OnlineWebSessionManager extends DefaultWebSessionManager {
             OnlineSession session = getOnlineSession(sessionKey);
             session.markAttributeChanged();
         }
-    }
-
-    private OnlineSession getOnlineSession(SessionKey sessionKey) {
-        OnlineSession session = null;
-        Object obj = doGetSession(sessionKey);
-        if (StringUtils.isNotNull(obj)) {
-            session = new OnlineSession();
-            BeanUtils.copyBeanProp(session, obj);
-        }
-        return session;
     }
 
     private boolean needMarkAttributeChanged(Object attributeKey) {
@@ -76,7 +64,18 @@ public class OnlineWebSessionManager extends DefaultWebSessionManager {
             OnlineSession s = getOnlineSession(sessionKey);
             s.markAttributeChanged();
         }
+
         return removed;
+    }
+
+    public OnlineSession getOnlineSession(SessionKey sessionKey) {
+        OnlineSession session = null;
+        Object obj = doGetSession(sessionKey);
+        if (StringUtils.isNotNull(obj)) {
+            session = new OnlineSession();
+            BeanUtils.copyBeanProp(session, obj);
+        }
+        return session;
     }
 
     /**
@@ -133,5 +132,10 @@ public class OnlineWebSessionManager extends DefaultWebSessionManager {
             log.info(msg);
         }
 
+    }
+
+    @Override
+    protected Collection<Session> getActiveSessions() {
+        throw new UnsupportedOperationException("getActiveSessions method not supported");
     }
 }

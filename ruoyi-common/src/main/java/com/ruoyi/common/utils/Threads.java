@@ -4,15 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.*;
-import java.util.function.Function;
 
 /**
  * 线程相关工具类.
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/10 9:20 AM
+ * @author javaniuniu
  */
 public class Threads {
     private static final Logger logger = LoggerFactory.getLogger(Threads.class);
@@ -74,6 +70,4 @@ public class Threads {
             logger.error(t.getMessage(), t);
         }
     }
-
-
 }

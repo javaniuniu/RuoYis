@@ -25,10 +25,7 @@ import java.util.List;
 /**
  * 角色信息
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/10 9:30 PM
+ * @author javaniuniu
  */
 @Controller
 @RequestMapping("/system/role")

@@ -19,10 +19,7 @@ import java.util.List;
 /**
  * 公告 信息操作处理
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/10 9:30 PM
+ * @author javaniuniu
  */
 @Controller
 @RequestMapping("/system/notice")

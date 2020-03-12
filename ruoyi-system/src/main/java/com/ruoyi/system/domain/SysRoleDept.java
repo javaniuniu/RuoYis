@@ -6,10 +6,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
  * 角色和部门关联 sys_role_dept
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 public class SysRoleDept {
     /**

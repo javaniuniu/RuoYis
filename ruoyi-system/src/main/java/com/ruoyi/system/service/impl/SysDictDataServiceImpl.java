@@ -12,10 +12,7 @@ import java.util.List;
 /**
  * 字典 业务层处理
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Service
 public class SysDictDataServiceImpl implements ISysDictDataService {

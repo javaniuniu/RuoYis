@@ -12,10 +12,7 @@ import javax.servlet.ServletResponse;
 /**
  * 同步Session数据到Db
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/11 3:23 PM
+ * @author javaniuniu
  */
 public class SyncOnlineSessionFilter extends PathMatchingFilter {
     @Autowired
@@ -29,7 +26,7 @@ public class SyncOnlineSessionFilter extends PathMatchingFilter {
         OnlineSession session = (OnlineSession) request.getAttribute(ShiroConstants.ONLINE_SESSION);
         // 如果session stop了 也不同步
         // session停止时间，如果stopTimestamp不为null，则代表已停止
-        if (session != null && session.getUserId() != null && session.getStopTimestamp() == null) {//通过session.getStopTimestamp() 判断
+        if (session != null && session.getUserId() != null && session.getStopTimestamp() == null) {
             onlineSessionDAO.syncToDb(session);
         }
         return true;

@@ -11,10 +11,7 @@ import java.util.Date;
 /**
  * 操作日志记录表 oper_log
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 public class SysOperLog extends BaseEntity {
     private static final long serialVersionUID = 1L;

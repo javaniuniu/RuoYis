@@ -18,10 +18,7 @@ import java.util.*;
 /**
  * 菜单 业务层处理
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Service
 public class SysMenuServiceImpl implements ISysMenuService {
@@ -41,7 +38,6 @@ public class SysMenuServiceImpl implements ISysMenuService {
      */
     @Override
     public List<SysMenu> selectMenusByUser(SysUser user) {
-
         List<SysMenu> menus = new LinkedList<SysMenu>();
         // 管理员显示所有菜单信息
         if (user.isAdmin()) {
@@ -295,7 +291,6 @@ public class SysMenuServiceImpl implements ISysMenuService {
                 returnList.add(t);
             }
         }
-
         return returnList;
     }
 

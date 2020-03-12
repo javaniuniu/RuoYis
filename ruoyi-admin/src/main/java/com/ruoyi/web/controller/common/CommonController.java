@@ -22,10 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 通用请求处理
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Controller
 public class CommonController {

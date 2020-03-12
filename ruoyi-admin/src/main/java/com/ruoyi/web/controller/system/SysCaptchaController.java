@@ -20,10 +20,7 @@ import java.io.IOException;
 /**
  * 图片验证码（支持算术形式）
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Controller
 @RequestMapping("/captcha")

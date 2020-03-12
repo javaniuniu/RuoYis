@@ -2,10 +2,10 @@ package com.ruoyi.framework.manager.factory;
 
 import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.utils.AddressUtils;
-import com.ruoyi.framework.util.LogUtils;
 import com.ruoyi.common.utils.ServletUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
 import com.ruoyi.framework.shiro.session.OnlineSession;
+import com.ruoyi.framework.util.LogUtils;
 import com.ruoyi.framework.util.ShiroUtils;
 import com.ruoyi.system.domain.SysLogininfor;
 import com.ruoyi.system.domain.SysOperLog;
@@ -22,13 +22,10 @@ import java.util.TimerTask;
 /**
  * 异步工厂（产生任务用）
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/10 9:38 AM
+ * @author liuhulu
  */
 public class AsyncFactory {
-    private static final Logger sys_user_logger = LoggerFactory.getLogger("sys-user");//sys-user与logback.xml中的name匹配
+    private static final Logger sys_user_logger = LoggerFactory.getLogger("sys-user");
 
     /**
      * 同步session到数据库
@@ -58,8 +55,9 @@ public class AsyncFactory {
         };
     }
 
-
     /**
+     * 操作日志记录
+     *
      * @param operLog 操作日志信息
      * @return 任务task
      */
@@ -74,7 +72,6 @@ public class AsyncFactory {
         };
     }
 
-
     /**
      * 记录登陆信息
      *
@@ -84,15 +81,14 @@ public class AsyncFactory {
      * @param args     列表
      * @return 任务task
      */
-
     public static TimerTask recordLogininfor(final String username, final String status, final String message, final Object... args) {
-        final UserAgent userAgent = UserAgent.parseUserAgentString(ServletUtils.getRequest().getHeader("User-Agent"));//User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36
+        final UserAgent userAgent = UserAgent.parseUserAgentString(ServletUtils.getRequest().getHeader("User-Agent"));
         final String ip = ShiroUtils.getIp();
         return new TimerTask() {
             @Override
             public void run() {
                 String address = AddressUtils.getRealAddressByIP(ip);
-                StringBuffer s = new StringBuffer();
+                StringBuilder s = new StringBuilder();
                 s.append(LogUtils.getBlock(ip));
                 s.append(address);
                 s.append(LogUtils.getBlock(username));
@@ -118,6 +114,7 @@ public class AsyncFactory {
                 } else if (Constants.LOGIN_FAIL.equals(status)) {
                     logininfor.setStatus(Constants.FAIL);
                 }
+                // 插入数据
                 SpringUtils.getBean(SysLogininforServiceImpl.class).insertLogininfor(logininfor);
             }
         };

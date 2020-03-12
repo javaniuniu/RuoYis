@@ -1,7 +1,7 @@
 package com.ruoyi.framework.util;
 
-import com.ruoyi.common.utils.IpUtils;
 import com.ruoyi.common.json.JSON;
+import com.ruoyi.common.utils.IpUtils;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +14,7 @@ import java.util.Map;
 /**
  * 处理并记录日志文件
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/10 11:13 AM
+ * @author javaniuniu
  */
 public class LogUtils {
     public static final Logger ERROR_LOG = LoggerFactory.getLogger("sys-error");

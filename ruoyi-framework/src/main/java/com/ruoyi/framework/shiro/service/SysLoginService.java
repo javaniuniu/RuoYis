@@ -20,10 +20,7 @@ import org.springframework.util.StringUtils;
 /**
  * 登录校验方法
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 10:14 PM
+ * @author javaniuniu
  */
 @Component
 public class SysLoginService {

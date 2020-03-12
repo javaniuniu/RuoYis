@@ -6,10 +6,7 @@ import org.apache.shiro.session.mgt.SimpleSession;
 /**
  * 在线用户会话属性
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/11 10:54 AM
+ * @author javaniuniu
  */
 public class OnlineSession extends SimpleSession {
     private static final long serialVersionUID = 1L;

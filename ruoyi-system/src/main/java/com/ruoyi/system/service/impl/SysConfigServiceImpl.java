@@ -14,10 +14,7 @@ import java.util.List;
 /**
  * 参数配置 服务层实现
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Service
 public class SysConfigServiceImpl implements ISysConfigService {
@@ -92,7 +89,6 @@ public class SysConfigServiceImpl implements ISysConfigService {
      */
     @Override
     public int deleteConfigByIds(String ids) {
-
         return configMapper.deleteConfigByIds(Convert.toStrArray(ids));
     }
 

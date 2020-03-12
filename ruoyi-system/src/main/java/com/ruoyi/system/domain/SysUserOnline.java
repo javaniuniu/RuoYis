@@ -10,10 +10,7 @@ import java.util.Date;
 /**
  * 当前在线会话 sys_user_online
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 public class SysUserOnline extends BaseEntity {
     private static final long serialVersionUID = 1L;

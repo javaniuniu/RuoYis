@@ -7,10 +7,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 /**
  * 程序注解配置
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Configuration
 // 表示通过aop框架暴露该代理对象,AopContext能够访问

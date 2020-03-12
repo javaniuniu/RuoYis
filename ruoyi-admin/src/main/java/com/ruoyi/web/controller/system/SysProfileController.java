@@ -22,10 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * 个人信息 业务处理
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/10 9:30 PM
+ * @author javaniuniu
  */
 @Controller
 @RequestMapping("/system/user/profile")

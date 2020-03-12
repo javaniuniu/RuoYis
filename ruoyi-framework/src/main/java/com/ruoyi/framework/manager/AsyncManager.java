@@ -10,12 +10,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * 异步任务管理器
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 11:02 PM
+ * @author liuhulu
  */
-// TODO 异步超时时间
 public class AsyncManager {
     /**
      * 操作延迟10毫秒
@@ -28,7 +24,7 @@ public class AsyncManager {
     private ScheduledExecutorService executor = SpringUtils.getBean("scheduledExecutorService");
 
     /**
-     * 单例模式 TODO
+     * 单例模式
      */
     private AsyncManager() {
     }
@@ -54,6 +50,4 @@ public class AsyncManager {
     public void shutdown() {
         Threads.shutdownAndAwaitTermination(executor);
     }
-
-
 }

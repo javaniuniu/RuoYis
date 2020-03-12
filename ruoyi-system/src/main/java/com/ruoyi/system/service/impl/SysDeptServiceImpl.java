@@ -19,10 +19,7 @@ import java.util.List;
 /**
  * 部门管理 服务实现
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Service
 public class SysDeptServiceImpl implements ISysDeptService {

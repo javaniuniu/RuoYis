@@ -14,10 +14,7 @@ import java.util.Map;
 /**
  * swagger 用户测试方法
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Api("用户信息管理")
 @RestController

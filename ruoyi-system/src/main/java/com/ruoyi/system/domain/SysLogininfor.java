@@ -11,10 +11,7 @@ import java.util.Date;
 /**
  * 系统访问记录表 sys_logininfor
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 public class SysLogininfor extends BaseEntity {
     private static final long serialVersionUID = 1L;

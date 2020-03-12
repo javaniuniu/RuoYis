@@ -1,19 +1,16 @@
 package com.ruoyi.common.utils;
 
 import com.ruoyi.common.config.Global;
-import com.ruoyi.common.utils.http.HttpUtils;
 import com.ruoyi.common.json.JSON;
 import com.ruoyi.common.json.JSONObject;
+import com.ruoyi.common.utils.http.HttpUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * 获取地址类
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/10 10:17 AM
+ * @author javaniuniu
  */
 public class AddressUtils {
     private static final Logger log = LoggerFactory.getLogger(AddressUtils.class);

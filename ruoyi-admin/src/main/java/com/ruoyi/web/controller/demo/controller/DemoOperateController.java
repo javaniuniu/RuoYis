@@ -23,10 +23,7 @@ import java.util.Map;
 /**
  * 操作控制
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 @Controller
 @RequestMapping("/demo/operate")

@@ -11,10 +11,7 @@ import javax.validation.constraints.Size;
 /**
  * 部门表 sys_dept
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
+ * @author javaniuniu
  */
 public class SysDept extends BaseEntity {
     private static final long serialVersionUID = 1L;

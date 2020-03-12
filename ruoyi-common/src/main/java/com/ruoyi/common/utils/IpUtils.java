@@ -7,10 +7,7 @@ import java.net.UnknownHostException;
 /**
  * 获取IP方法
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/10 10:19 AM
+ * @author javaniuniu
  */
 public class IpUtils {
     public static String getIpAddr(HttpServletRequest request) {

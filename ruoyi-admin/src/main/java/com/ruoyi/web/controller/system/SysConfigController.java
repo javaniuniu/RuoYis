@@ -4,8 +4,8 @@ import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.constant.UserConstants;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.core.page.TableDataInfo;
+import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.framework.util.ShiroUtils;
 import com.ruoyi.system.domain.SysConfig;
@@ -22,16 +22,11 @@ import java.util.List;
 /**
  * 参数配置 信息操作处理
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/9 9:53 PM
- * TODO @RequiresPermissions
+ * @author javaniuniu
  */
 @Controller
 @RequestMapping("/system/config")
 public class SysConfigController extends BaseController {
-
     private String prefix = "system/config";
 
     @Autowired
@@ -47,7 +42,7 @@ public class SysConfigController extends BaseController {
      * 查询参数配置列表
      */
     @RequiresPermissions("system:config:list")
-    @GetMapping("/list")
+    @PostMapping("/list")
     @ResponseBody
     public TableDataInfo list(SysConfig config) {
         startPage();
@@ -61,7 +56,7 @@ public class SysConfigController extends BaseController {
     @ResponseBody
     public AjaxResult export(SysConfig config) {
         List<SysConfig> list = configService.selectConfigList(config);
-        ExcelUtil<SysConfig> util = new ExcelUtil<>(SysConfig.class);
+        ExcelUtil<SysConfig> util = new ExcelUtil<SysConfig>(SysConfig.class);
         return util.exportExcel(list, "参数数据");
     }
 
@@ -97,6 +92,20 @@ public class SysConfigController extends BaseController {
         return prefix + "/edit";
     }
 
+    /**
+     * 修改保存参数配置
+     */
+    @RequiresPermissions("system:config:edit")
+    @Log(title = "参数管理", businessType = BusinessType.UPDATE)
+    @PostMapping("/edit")
+    @ResponseBody
+    public AjaxResult editSave(@Validated SysConfig config) {
+        if (UserConstants.CONFIG_KEY_NOT_UNIQUE.equals(configService.checkConfigKeyUnique(config))) {
+            return error("修改参数'" + config.getConfigName() + "'失败，参数键名已存在");
+        }
+        config.setUpdateBy(ShiroUtils.getLoginName());
+        return toAjax(configService.updateConfig(config));
+    }
 
     /**
      * 删除参数配置
@@ -117,6 +126,4 @@ public class SysConfigController extends BaseController {
     public String checkConfigKeyUnique(SysConfig config) {
         return configService.checkConfigKeyUnique(config);
     }
-
-
 }

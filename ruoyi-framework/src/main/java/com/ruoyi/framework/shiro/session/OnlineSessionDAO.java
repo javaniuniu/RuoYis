@@ -16,10 +16,7 @@ import java.util.Date;
 /**
  * 针对自定义的ShiroSession的db操作
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/11 10:12 AM
+ * @author javaniuniu
  */
 public class OnlineSessionDAO extends EnterpriseCacheSessionDAO {
     /**
@@ -38,7 +35,7 @@ public class OnlineSessionDAO extends EnterpriseCacheSessionDAO {
 
     public OnlineSessionDAO() {
         super();
-    } // 定义自己的空构造方法
+    }
 
     public OnlineSessionDAO(long expireTime) {
         super();
@@ -61,19 +58,6 @@ public class OnlineSessionDAO extends EnterpriseCacheSessionDAO {
     }
 
     /**
-     * 当会话过期/停止（如用户退出时）属性等会调用
-     */
-    @Override
-    protected void doDelete(Session session) {
-        OnlineSession onlineSession = (OnlineSession) session;
-        if (null == onlineSession) {
-            return;
-        }
-        onlineSession.setStatus(OnlineStatus.off_line);
-        sysShiroService.deleteSession(onlineSession);
-    }
-
-    /**
      * 更新会话；如更新会话最后访问时间/停止会话/设置超时时间/设置移除属性等会调用
      */
     public void syncToDb(OnlineSession onlineSession) {
@@ -92,12 +76,11 @@ public class OnlineSessionDAO extends EnterpriseCacheSessionDAO {
             if (isGuest == false && onlineSession.isAttributeChanged()) {
                 needSync = true;
             }
+
             if (needSync == false) {
                 return;
             }
-
         }
-
         // 更新上次同步数据库时间
         onlineSession.setAttribute(LAST_SYNC_DB_TIMESTAMP, onlineSession.getLastAccessTime());
         // 更新完后 重置标识
@@ -105,9 +88,18 @@ public class OnlineSessionDAO extends EnterpriseCacheSessionDAO {
             onlineSession.resetAttributeChanged();
         }
         AsyncManager.me().execute(AsyncFactory.syncSessionToDb(onlineSession));
-
-
     }
 
-
+    /**
+     * 当会话过期/停止（如用户退出时）属性等会调用
+     */
+    @Override
+    protected void doDelete(Session session) {
+        OnlineSession onlineSession = (OnlineSession) session;
+        if (null == onlineSession) {
+            return;
+        }
+        onlineSession.setStatus(OnlineStatus.off_line);
+        sysShiroService.deleteSession(onlineSession);
+    }
 }

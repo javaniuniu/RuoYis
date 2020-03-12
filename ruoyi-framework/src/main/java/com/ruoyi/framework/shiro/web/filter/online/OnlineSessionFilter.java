@@ -20,10 +20,7 @@ import java.io.IOException;
 /**
  * 自定义访问控制
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/11 10:10 AM
+ * @author javaniuniu
  */
 public class OnlineSessionFilter extends AccessControlFilter {
     /**
@@ -36,11 +33,11 @@ public class OnlineSessionFilter extends AccessControlFilter {
     private OnlineSessionDAO onlineSessionDAO;
 
     /**
-     * TODO mappedValue 不理解
      * 表示是否允许访问；mappedValue就是[urls]配置中拦截器参数部分，如果允许访问返回true，否则false；
      */
     @Override
-    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
+    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue)
+            throws Exception {
         Subject subject = getSubject(request, response);
         if (subject == null || subject.getSession() == null) {
             return true;
@@ -61,10 +58,10 @@ public class OnlineSessionFilter extends AccessControlFilter {
                     onlineSession.markAttributeChanged();
                 }
             }
+
             if (onlineSession.getStatus() == OnlineStatus.off_line) {
                 return false;
             }
-
         }
         return true;
     }
@@ -82,12 +79,7 @@ public class OnlineSessionFilter extends AccessControlFilter {
         return false;
     }
 
-    /**
-     * TODO WebUtils
-     * 跳转到登录页
-     *
-     * @throws IOException
-     */
+    // 跳转到登录页
     @Override
     protected void redirectToLogin(ServletRequest request, ServletResponse response) throws IOException {
         WebUtils.issueRedirect(request, response, loginUrl);

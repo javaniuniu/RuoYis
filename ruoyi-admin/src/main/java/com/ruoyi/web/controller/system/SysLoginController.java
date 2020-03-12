@@ -19,10 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 登录验证
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/10 9:30 PM
+ * @author javaniuniu
  */
 @Controller
 public class SysLoginController extends BaseController {

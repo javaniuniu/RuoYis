@@ -6,17 +6,16 @@ import com.ruoyi.system.domain.SysUserOnline;
 import com.ruoyi.system.service.ISysUserOnlineService;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
 /**
  * 会话db操作处理
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/11 10:30 AM
+ * @author javaniuniu
  */
+@Component
 public class SysShiroService {
     @Autowired
     private ISysUserOnlineService onlineService;
@@ -27,7 +26,7 @@ public class SysShiroService {
      * @param onlineSession 会话信息
      */
     public void deleteSession(OnlineSession onlineSession) {
-        onlineService.deleteOnlineById(String.valueOf(onlineSession.getUserId()));
+        onlineService.deleteOnlineById(String.valueOf(onlineSession.getId()));
     }
 
     /**
@@ -56,5 +55,4 @@ public class SysShiroService {
         }
         return onlineSession;
     }
-
 }

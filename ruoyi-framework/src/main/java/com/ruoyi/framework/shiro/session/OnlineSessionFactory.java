@@ -7,17 +7,16 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.SessionContext;
 import org.apache.shiro.session.mgt.SessionFactory;
 import org.apache.shiro.web.session.mgt.WebSessionContext;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * 自定义sessionFactory会话
  *
- * @Author: java牛牛
- * @Web: http://javaniuniu.com
- * @GitHub https://github.com/minplemon
- * @Date: 2020/3/11 5:31 PM
+ * @author javaniuniu
  */
+@Component
 public class OnlineSessionFactory implements SessionFactory {
     @Override
     public Session createSession(SessionContext initData) {
