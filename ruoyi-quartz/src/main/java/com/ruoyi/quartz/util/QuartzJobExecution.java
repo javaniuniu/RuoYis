@@ -5,12 +5,15 @@ import org.quartz.JobExecutionContext;
 
 /**
  * 定时任务处理（允许并发执行）
- *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/17 7:25 PM
  */
 public class QuartzJobExecution extends AbstractQuartzJob {
+
     @Override
-    protected void doExecute(JobExecutionContext context, SysJob sysJob) throws Exception {
+    protected void doExecute(JobExecutionContext jobExecutionContext, SysJob sysJob) throws Exception {
         JobInvokeUtil.invokeMethod(sysJob);
     }
 }

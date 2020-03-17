@@ -10,10 +10,14 @@ import java.util.Properties;
 /**
  * 定时任务配置
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/17 9:56 PM
  */
 @Configuration
 public class ScheduleConfig {
+
     @Bean
     public SchedulerFactoryBean schedulerFactoryBean(DataSource dataSource) {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();

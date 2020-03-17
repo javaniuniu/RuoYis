@@ -22,7 +22,10 @@ import java.util.List;
 /**
  * 调度任务信息操作处理
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/17 10:02 PM
  */
 @Controller
 @RequestMapping("/monitor/job")

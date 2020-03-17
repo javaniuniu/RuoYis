@@ -2,14 +2,16 @@ package com.ruoyi.quartz.util;
 
 import com.ruoyi.common.constant.ScheduleConstants;
 import com.ruoyi.common.exception.job.TaskException;
-import com.ruoyi.common.exception.job.TaskException.Code;
 import com.ruoyi.quartz.domain.SysJob;
 import org.quartz.*;
 
 /**
  * 定时任务工具类
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/17 7:17 PM
  */
 public class ScheduleUtils {
     /**
@@ -63,7 +65,6 @@ public class ScheduleUtils {
             // 防止创建时存在数据问题 先移除，然后在执行创建操作
             scheduler.deleteJob(getJobKey(jobId, jobGroup));
         }
-
         scheduler.scheduleJob(jobDetail, trigger);
 
         // 暂停任务
@@ -88,7 +89,8 @@ public class ScheduleUtils {
                 return cb.withMisfireHandlingInstructionDoNothing();
             default:
                 throw new TaskException("The task misfire policy '" + job.getMisfirePolicy()
-                        + "' cannot be used in cron schedule tasks", Code.CONFIG_ERROR);
+                        + "' cannot be used in cron schedule tasks", TaskException.Code.CONFIG_ERROR);
         }
     }
+
 }

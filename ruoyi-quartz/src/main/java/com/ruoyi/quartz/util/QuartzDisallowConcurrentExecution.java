@@ -7,7 +7,10 @@ import org.quartz.JobExecutionContext;
 /**
  * 定时任务处理（禁止并发执行）
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/17 9:14 PM
  */
 @DisallowConcurrentExecution
 public class QuartzDisallowConcurrentExecution extends AbstractQuartzJob {

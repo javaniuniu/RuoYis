@@ -10,7 +10,10 @@ import java.util.Date;
 /**
  * 定时任务调度日志表 sys_job_log
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/17 6:27 PM
  */
 public class SysJobLog extends BaseEntity {
     private static final long serialVersionUID = 1L;

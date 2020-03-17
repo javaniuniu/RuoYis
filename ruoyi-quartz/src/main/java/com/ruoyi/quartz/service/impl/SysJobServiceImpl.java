@@ -13,7 +13,6 @@ import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
@@ -22,9 +21,11 @@ import java.util.List;
 /**
  * 定时任务调度信息 服务层
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/17 7:12 PM
  */
-@Service
 public class SysJobServiceImpl implements ISysJobService {
     @Autowired
     private Scheduler scheduler;
@@ -43,6 +44,24 @@ public class SysJobServiceImpl implements ISysJobService {
             updateSchedulerJob(job, job.getJobGroup());
         }
     }
+
+    /**
+     * 更新任务
+     *
+     * @param job      任务对象
+     * @param jobGroup 任务组名
+     */
+    private void updateSchedulerJob(SysJob job, String jobGroup) throws SchedulerException, TaskException {
+        Long jobId = job.getJobId();
+        // 判断是否存在
+        JobKey jobKey = ScheduleUtils.getJobKey(jobId, jobGroup);
+        if (scheduler.checkExists(jobKey)) {
+            // 防止创建时存在数据问题 先移除，然后在执行创建操作
+            scheduler.deleteJob(jobKey);
+        }
+        ScheduleUtils.createScheduleJob(scheduler, job);
+    }
+
 
     /**
      * 获取quartz调度器的计划任务列表
@@ -200,23 +219,6 @@ public class SysJobServiceImpl implements ISysJobService {
             updateSchedulerJob(job, properties.getJobGroup());
         }
         return rows;
-    }
-
-    /**
-     * 更新任务
-     *
-     * @param job      任务对象
-     * @param jobGroup 任务组名
-     */
-    public void updateSchedulerJob(SysJob job, String jobGroup) throws SchedulerException, TaskException {
-        Long jobId = job.getJobId();
-        // 判断是否存在
-        JobKey jobKey = ScheduleUtils.getJobKey(jobId, jobGroup);
-        if (scheduler.checkExists(jobKey)) {
-            // 防止创建时存在数据问题 先移除，然后在执行创建操作
-            scheduler.deleteJob(jobKey);
-        }
-        ScheduleUtils.createScheduleJob(scheduler, job);
     }
 
     /**

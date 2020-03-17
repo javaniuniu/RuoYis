@@ -3,6 +3,7 @@ package com.ruoyi.quartz.util;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
 import com.ruoyi.quartz.domain.SysJob;
+import org.omg.CORBA.OBJ_ADAPTER;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -12,7 +13,10 @@ import java.util.List;
 /**
  * 任务执行工具
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/17 7:40 PM
  */
 public class JobInvokeUtil {
     /**
@@ -57,7 +61,7 @@ public class JobInvokeUtil {
     /**
      * 校验是否为为class包名
      *
-     * @param str 名称
+     * @param invokeTarget 名称
      * @return true是 false否
      */
     public static boolean isValidClassName(String invokeTarget) {

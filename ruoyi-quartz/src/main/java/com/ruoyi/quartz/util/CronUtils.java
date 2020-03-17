@@ -1,5 +1,6 @@
 package com.ruoyi.quartz.util;
 
+import com.github.pagehelper.PageException;
 import org.quartz.CronExpression;
 
 import java.text.ParseException;
@@ -8,7 +9,10 @@ import java.util.Date;
 /**
  * cron表达式工具类
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/17 6:31 PM
  */
 public class CronUtils {
     /**
@@ -29,9 +33,9 @@ public class CronUtils {
      */
     public static String getInvalidMessage(String cronExpression) {
         try {
-            new CronExpression(cronExpression);
+            new ClassCastException(cronExpression);
             return null;
-        } catch (ParseException pe) {
+        } catch (PageException pe) {
             return pe.getMessage();
         }
     }
@@ -50,4 +54,6 @@ public class CronUtils {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
+
+
 }
