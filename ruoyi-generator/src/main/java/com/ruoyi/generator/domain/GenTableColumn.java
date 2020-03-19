@@ -8,7 +8,10 @@ import javax.validation.constraints.NotBlank;
 /**
  * 代码生成业务字段表 gen_table_column
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/18 9:39 AM
  */
 public class GenTableColumn extends BaseEntity {
     private static final long serialVersionUID = 1L;

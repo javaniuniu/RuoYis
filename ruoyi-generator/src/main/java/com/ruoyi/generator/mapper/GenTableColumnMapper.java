@@ -7,7 +7,10 @@ import java.util.List;
 /**
  * 业务字段 数据层
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/18 9:43 AM
  */
 public interface GenTableColumnMapper {
     /**

@@ -37,7 +37,10 @@ import java.util.zip.ZipOutputStream;
 /**
  * 业务 服务层实现
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/19 10:03 AM
  */
 @Service
 public class GenTableServiceImpl implements IGenTableService {

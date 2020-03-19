@@ -7,7 +7,10 @@ import java.util.List;
 /**
  * 业务字段 服务层
  *
- * @author javaniuniu
+ * @Author: java牛牛
+ * @Web: http://javaniuniu.com
+ * @GitHub https://github.com/javaniuniu
+ * @Date: 2020/3/19 10:03 AM
  */
 public interface IGenTableColumnService {
     /**
